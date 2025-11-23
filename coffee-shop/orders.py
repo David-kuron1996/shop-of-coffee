@@ -7,3 +7,30 @@ class Order:
         self.customer = customer
         self.coffee = coffee
         self.price = price
+    @property
+    def customer(self):
+        return self._customer
+
+    @customer.setter
+    def customer(self, value):
+        if not isinstance(value, Customer):
+            raise ValueError("Customer must be a Customer instance")
+        self._customer = value
+        if self not in value.orders():
+            value._orders.append(self)
+
+    @property
+    def coffee(self):
+        return self._coffee
+
+    @coffee.setter
+    def coffee(self, value):
+        if not isinstance(value, Coffee):
+            raise ValueError("Coffee must be a Coffee instance")
+        self._coffee = value
+        if self not in value.orders():
+            value._orders.append(self)
+
+    @property
+    def price(self):
+        return self._price
