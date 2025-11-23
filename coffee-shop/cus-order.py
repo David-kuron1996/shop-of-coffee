@@ -24,4 +24,25 @@ def debug_coffee_shop():
     # Test customer methods
     print(f"Alice's orders: {len(alice.orders())}")
     print(f"Alice's coffees: {[c.name for c in alice.coffees()]}")
+    # Test coffee methods
+    print(f"Latte orders: {latte.num_orders()}")
+    print(f"Latte customers: {[c.name for c in latte.customers()]}")
+    print(f"Latte average price: {latte.average_price():.2f}")
     
+    # Test most_aficionado
+    print(f"Latte aficionado: {Customer.most_aficionado(latte).name}")
+    print(f"Espresso aficionado: {Customer.most_aficionado(espresso).name}")
+    
+    # Test invalid inputs
+    try:
+        invalid_customer = Customer("")  # Should raise an exception
+    except ValueError as e:
+        print(f"Error creating customer: {e}")
+    
+    try:
+        invalid_coffee = Coffee("Te")  # Should raise an exception
+    except ValueError as e:
+        print(f"Error creating coffee: {e}")
+
+if __name__ == "__main__":
+    debug_coffee_shop()
