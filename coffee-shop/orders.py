@@ -34,3 +34,22 @@ class Order:
     @property
     def price(self):
         return self._price
+    @coffee.setter
+    def coffee(self, value):
+        if not isinstance(value, Coffee):
+            raise ValueError("Coffee must be a Coffee instance")
+        self._coffee = value
+        if self not in value.orders():
+            value._orders.append(self)
+
+    @property
+    def price(self):
+        return self._price
+
+    @price.setter
+    def price(self, value):
+        if not isinstance(value, (int, float)):
+            raise ValueError("Price must be a number")
+        if value < 1.0 or value > 10.0:
+            raise ValueError("Price must be between 1.0 and 10.0")
+        self._price = float(value)
