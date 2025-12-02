@@ -1,3 +1,5 @@
+# coffee.py
+
 class Coffee:
     def __init__(self, name):
         self._name = None
@@ -27,7 +29,9 @@ class Coffee:
 
     def num_orders(self):
         return len(self._orders)
-def average_price(self):
+
+    # --- FIX: This method was not indented ---
+    def average_price(self):
         if not self._orders:
             return 0
         total = sum(order.price for order in self._orders)

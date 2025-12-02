@@ -1,3 +1,5 @@
+# debug.py
+
 from customer import Customer
 from coffee import Coffee
 from orders import Order
@@ -12,7 +14,8 @@ def debug_coffee_shop():
     latte = Coffee("Latte")
     espresso = Coffee("Espresso")
     cappuccino = Coffee("Cappuccino")
-     # Create orders
+    
+    # Create orders
     order1 = alice.create_order(latte, 4.5)
     order2 = alice.create_order(espresso, 3.0)
     order3 = bob.create_order(latte, 4.5)
@@ -24,14 +27,24 @@ def debug_coffee_shop():
     # Test customer methods
     print(f"Alice's orders: {len(alice.orders())}")
     print(f"Alice's coffees: {[c.name for c in alice.coffees()]}")
+    
     # Test coffee methods
     print(f"Latte orders: {latte.num_orders()}")
     print(f"Latte customers: {[c.name for c in latte.customers()]}")
     print(f"Latte average price: {latte.average_price():.2f}")
     
     # Test most_aficionado
-    print(f"Latte aficionado: {Customer.most_aficionado(latte).name}")
-    print(f"Espresso aficionado: {Customer.most_aficionado(espresso).name}")
+    latte_aficionado = Customer.most_aficionado(latte)
+    if latte_aficionado:
+        print(f"Latte aficionado: {latte_aficionado.name}")
+    else:
+        print("Latte aficionado: No aficionado found")
+        
+    espresso_aficionado = Customer.most_aficionado(espresso)
+    if espresso_aficionado:
+        print(f"Espresso aficionado: {espresso_aficionado.name}")
+    else:
+        print("Espresso aficionado: No aficionado found")
     
     # Test invalid inputs
     try:
